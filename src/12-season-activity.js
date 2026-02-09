@@ -31,5 +31,72 @@
  * @returns {{ season: string, activity: string } | null}
  */
 export function getSeasonActivity(month, temperature) {
-  // Your code here
+    // Your code here
+    let SEASONE_TYPES = {
+        Winter: [12, 1, 2],
+        Spring: [3, 4, 5],
+        Summer: [6, 7, 8],
+        Autumn: [9, 10, 11]
+    };
+    if (month < 1 || month > 12) return null;
+    let currentSeasone = null;
+    for (let seasone of Object.keys(SEASONE_TYPES)) {
+        if (SEASONE_TYPES[seasone].includes(month)) {
+            currentSeasone = seasone;
+        }
+    }
+
+    switch (currentSeasone) {
+        case 'Winter':
+            if (temperature < 0) {
+                return {
+                    season: 'Winter',
+                    activity: 'skiing'
+                };
+            } else if (temperature >= 0) {
+                return {
+                    season: 'Winter',
+                    activity: 'ice skating'
+                };
+            }
+
+        case 'Spring':
+            if (temperature > 20) {
+                return {
+                    season: 'Spring',
+                    activity: 'hiking'
+                };
+            } else if (temperature <= 20) {
+                return {
+                    season: 'Spring',
+                    activity: 'museum visit'
+                };
+            }
+        case 'Summer':
+            if (temperature <= 35) {
+                return {
+                    season: 'Summer',
+                    activity: 'cycling'
+                };
+            } else if (temperature > 35) {
+                return {
+                    season: 'Summer',
+                    activity: 'swimming'
+                };
+            }
+        case 'Autumn':
+            if (temperature <= 15) {
+                return {
+                    season: 'Autumn',
+                    activity: 'reading at a cafe'
+                };
+            } else if (temperature > 15) {
+                return {
+                    season: 'Autumn',
+                    activity: 'nature walk'
+                };
+            }
+        default:
+            return null;
+    }
 }

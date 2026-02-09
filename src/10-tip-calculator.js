@@ -45,7 +45,6 @@ export function calculateTip(billAmount, serviceRating) {
     } else if (serviceRating === 5) {
         tipPercentage = 25;
     }
-    console.log(tipPercentage);
 
     if (!tipPercentage) return null;
 
